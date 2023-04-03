@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import NavLinkAnchor from "./NavLinkAnchor";
+import React from 'react';
+import styled from 'styled-components';
+
+import NavLinkAnchor from './NavLinkAnchor';
 
 const Navlink = () => {
   return (

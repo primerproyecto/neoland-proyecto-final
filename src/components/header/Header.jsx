@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Navlink from "../navlink/Navlink";
+import React from 'react';
+import styled from 'styled-components';
+
+import Navlink from '../navlink/Navlink';
 
 const HEADER_HIDE_THRESHOLD = 400;
 
@@ -10,37 +11,37 @@ const Header = () => {
   React.useEffect(() => {
     let previousScrollValue;
 
-    function handleScroll(ev) {
+    function handleScroll() {
       const currentScroll = window.scrollY;
 
-      if (typeof previousScrollValue !== "number") {
+      if (typeof previousScrollValue !== 'number') {
         previousScrollValue = currentScroll;
         return;
       }
 
-      const direction = currentScroll > previousScrollValue ? "down" : "up";
+      const direction = currentScroll > previousScrollValue ? 'down' : 'up';
 
       if (
         isHeaderVisible &&
-        direction === "down" &&
+        direction === 'down' &&
         currentScroll > HEADER_HIDE_THRESHOLD
       ) {
         setIsHeaderVisible(false);
-      } else if (!isHeaderVisible && direction === "up") {
+      } else if (!isHeaderVisible && direction === 'up') {
         setIsHeaderVisible(true);
       }
 
       previousScrollValue = currentScroll;
     }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [isHeaderVisible]);
 
-  const transform = isHeaderVisible ? "translateY(0%)" : "translateY(-100%)";
+  const transform = isHeaderVisible ? 'translateY(0%)' : 'translateY(-100%)';
   return (
     <HeaderTag style={{ transform }}>
       My Header

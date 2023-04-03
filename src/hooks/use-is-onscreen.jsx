@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 //https://codesandbox.io/s/customhook-observer-e1kthy?file=/App.js
 function useIsOnscreen() {
   const [isOnScreen, setIsOnScreen] = React.useState(false);
