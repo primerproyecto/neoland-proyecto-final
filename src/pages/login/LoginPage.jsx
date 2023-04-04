@@ -17,7 +17,7 @@ const LoginPage = () => {
     (async () => {
       const llamarToken = await getToken({ nombre, contra });
       setToken(llamarToken.token);
-      window.localStorage.setItem('userToken', JSON.stringify(token));
+      window.localStorage.setItem('userToken', JSON.stringify(llamarToken.token));
     })();
 
     console.log('que es token tran hacer el set', token);
