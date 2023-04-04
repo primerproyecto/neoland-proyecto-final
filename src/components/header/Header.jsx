@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Navlink from '../navlink/Navlink';
@@ -44,7 +45,7 @@ const Header = () => {
   const transform = isHeaderVisible ? 'translateY(0%)' : 'translateY(-100%)';
   return (
     <HeaderTag style={{ transform }}>
-      My Header
+      <Link to="/">My Header</Link>
       <Navlink />
     </HeaderTag>
   );
