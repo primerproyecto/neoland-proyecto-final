@@ -21,13 +21,20 @@ nav .active {
     justify-content: center;
     gap: 1rem;
     align-items: center;
-    
-
     @media ${devices.laptop} {
         flex-direction: row;
         gap: 2rem;
   }
-    
+   section {
+    margin:0 auto;
+    border: 1px solid red;
+    max-width:960px;
+  }
+}
+.columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr) ) ;
+    gap: 1rem;
 }
 `;
 

@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { TokenContext } from '../../context/userContext';
+import SelectLanguage from '../selectLanguage/SelectLanguage';
 
 const Navlink = () => {
   const { token, setToken } = useContext(TokenContext);
@@ -15,6 +17,7 @@ const Navlink = () => {
   return (
     <nav>
       <Lista>
+        <SelectLanguage />
         <li>
           <NavLinkAnchorTag to="/newsletter">
             Newsletter<Revealed aria-hidden={true}>Newsletter</Revealed>
@@ -22,24 +25,38 @@ const Navlink = () => {
         </li>
         <li>
           <NavLinkAnchorTag to="/productos">
-            Tienda<Revealed aria-hidden={true}>Tienda</Revealed>
+            <FormattedMessage id="app.header.shop" defaultMessage="Shop" />
+            <Revealed aria-hidden={true}>
+              <FormattedMessage id="app.header.shop" defaultMessage="Shop" />
+            </Revealed>
           </NavLinkAnchorTag>
         </li>
         <li>
           <NavLinkAnchorTag to="/carrito">
-            Carrito<Revealed aria-hidden={true}>Carrito</Revealed>
+            <FormattedMessage id="app.header.cart" defaultMessage="Cart" />
+            <Revealed aria-hidden={true}>
+              <FormattedMessage id="app.header.cart" defaultMessage="Carrito" />
+            </Revealed>
           </NavLinkAnchorTag>
         </li>
         {!token && (
           <li>
             <NavLinkAnchorTag to="login">
-              Log in<Revealed aria-hidden={true}>Log in</Revealed>{' '}
+              <FormattedMessage id="app.header.login" defaultMessage="Log in" />
+              <Revealed aria-hidden={true}>
+                <FormattedMessage id="app.header.login" defaultMessage="Acceso" />
+              </Revealed>{' '}
             </NavLinkAnchorTag>
           </li>
         )}
         {token && (
           <li>
-            <NavLinkAnchorTag to="/usuario/1">Perfil </NavLinkAnchorTag>
+            <NavLinkAnchorTag to="/usuario/1">
+              <FormattedMessage id="app.header.profile" defaultMessage="Profile" />
+              <Revealed aria-hidden={true}>
+                <FormattedMessage id="app.header.profile" defaultMessage="Perfil" />
+              </Revealed>{' '}
+            </NavLinkAnchorTag>
           </li>
         )}
         {token && (

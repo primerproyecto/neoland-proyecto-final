@@ -60,6 +60,7 @@ const HeaderTag = styled.header`
   justify-content: space-between;
   background: white;
   transition: transform 350ms;
+  z-index: 9;
 `;
 
 export default Header;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { TokenContext } from '../../context/userContext';
 import { getToken } from '../../services/token';
@@ -9,7 +9,8 @@ const LoginPage = () => {
   // creo estados para los campos de formulario
   const [nombre, setNombre] = useState('');
   const [contra, setContra] = useState('');
-  const { token, setToken } = useContext(TokenContext);
+  const { setToken } = useContext(TokenContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,8 +20,7 @@ const LoginPage = () => {
       setToken(llamarToken.token);
       window.localStorage.setItem('userToken', JSON.stringify(llamarToken.token));
     })();
-
-    console.log('que es token tran hacer el set', token);
+    navigate('/productos');
   };
 
   return (
