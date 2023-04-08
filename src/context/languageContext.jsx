@@ -27,8 +27,6 @@ const ProviderLanguage = (props) => {
     setLocale(e.target.value);
     setMessages(e.target.value === 'en' ? English : Spanish);
   };
-  console.log('que es locale', locale);
-  console.log('que son mesages', messages);
   return (
     <contextLanguage.Provider value={{ locale, setLocale, handleLanguage }}>
       <IntlProvider messages={messages} locale={locale}>

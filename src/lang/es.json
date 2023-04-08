@@ -2,5 +2,13 @@
   "app.header.shop": "Tienda",
   "app.header.cart": "Carrito",
   "app.header.profile": "Perfil",
-  "app.header.login": "Acceso"
+  "app.header.login": "Acceso",
+  "app.header.cargando": "Cargando ...",
+  "app.header.categoria_modaMujer": "Moda mujer",
+  "app.header.categoria_modaHombre": "Modal hombre",
+  "app.header.categoria_joya": "Joyería",
+  "app.header.categoria_electronica": "Tecnología",
+  "app.header.categoria_addFavoritos": "Agregar a favoritos",
+  "app.header.categoria_removeFavoritos": "Borrar de favoritos",
+  "app.header.categoria_addToCart": "Agregar al carrito"
 }

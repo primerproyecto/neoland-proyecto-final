@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Main = () => {
   return (
     <MainTag>
+      {/* <Navigate to="/productos" /> */}
       <Outlet />
     </MainTag>
   );

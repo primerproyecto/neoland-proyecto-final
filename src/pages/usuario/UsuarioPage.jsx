@@ -7,13 +7,22 @@ import { getUsuario } from '../../services/usuario';
 const UsuarioPage = () => {
   const usarioParam = useParams();
   const [usuario, setUsuario] = useState('');
+  const [favoritos] = useState(() => {
+    //consulto localstorage por si hay alguno
+    const resultados = JSON.parse(window.localStorage.getItem('favoritos'));
+    console.log('que son FAV', resultados);
+    if (resultados) {
+      return resultados;
+    } else {
+      return [];
+    }
+  });
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       setUsuario(await getUsuario(usarioParam.id));
     })();
   }, []);
-  console.log(usuario);
   return (
     <div className="fluidContainer">
       <button onClick={() => navigate(-1)}>Atrás</button>
@@ -28,6 +37,9 @@ const UsuarioPage = () => {
         <li>Ciudad: {usuario.address?.city}</li>
       </ul>
       <h2>Favoritos</h2>
+      {favoritos?.map((item, index) => {
+        return <li key={index}>{item}</li>;
+      })}
     </div>
   );
 };

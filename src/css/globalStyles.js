@@ -25,11 +25,6 @@ nav .active {
         flex-direction: row;
         gap: 2rem;
   }
-   section {
-    margin:0 auto;
-    border: 1px solid red;
-    max-width:960px;
-  }
 }
 .columnas {
     display: grid;

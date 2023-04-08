@@ -16,7 +16,6 @@ const Paginacion = ({ currentPage, total, limit, onPageChange }) => {
   const pagesCount = Math.ceil(total / limit);
 
   const todasLasPaginas = range(1, pagesCount);
-  console.log('que eson todaslaspagina', todasLasPaginas);
 
   return (
     <div>

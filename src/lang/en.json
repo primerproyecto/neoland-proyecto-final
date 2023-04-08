@@ -2,5 +2,13 @@
   "app.header.shop": "Shop",
   "app.header.cart": "Cart",
   "app.header.profile": "Profile",
-  "app.header.login": "Log in"
+  "app.header.login": "Log in",
+  "app.header.cargando": "Loading ...",
+  "app.header.categoria_modaMujer": "Women's clothing",
+  "app.header.categoria_modaHombre": "Men's clothing",
+  "app.header.categoria_joya": "Jewelery",
+  "app.header.categoria_electronica": "Electronics",
+  "app.header.categoria_addFavoritos": "Add to favorites",
+  "app.header.categoria_removeFavoritos": "Remove favorite",
+  "app.header.categoria_addToCart": "Add to cart"
 }

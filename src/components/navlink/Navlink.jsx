@@ -10,7 +10,6 @@ const Navlink = () => {
   const { token, setToken } = useContext(TokenContext);
 
   const handleLogOut = () => {
-    console.log('hacemos logout');
     setToken('');
     window.localStorage.removeItem('userToken');
   };
