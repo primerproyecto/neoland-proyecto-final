@@ -31,7 +31,7 @@ const LoginPage = () => {
       </p>
       <br />
       <Formulario onSubmit={handleSubmit}>
-        <div>
+        <div className="fieldWrapper">
           <label htmlFor="nombre">Nombre</label>
           <input
             value={nombre}
@@ -40,7 +40,7 @@ const LoginPage = () => {
             type="text"
           />
         </div>
-        <div>
+        <div className="fieldWrapper">
           <label htmlFor="contra">Contraseña</label>
           <input
             value={contra}

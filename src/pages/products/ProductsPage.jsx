@@ -9,7 +9,13 @@ import { CartContext } from '../../context/cartContext';
 import { ProductsContent } from '../../context/productsContext.jsx';
 //utilidades
 import { estaPresenteEnArray } from '../../utils';
-import { Figure, Imagen, LoadingWrapper } from './ProductStyes.jsx';
+import {
+  Figure,
+  Imagen,
+  LoadingWrapper,
+  SearchByNameSection,
+  FilterByCategory,
+} from './ProductStyes.jsx';
 
 const ProductsPage = () => {
   const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('');
@@ -77,7 +83,7 @@ const ProductsPage = () => {
         </LoadingWrapper>
       )}
 
-      <section>
+      <SearchByNameSection>
         <div className="wrapper">
           <form>
             <input
@@ -91,8 +97,8 @@ const ProductsPage = () => {
             {terminoDeBusqueda && <button onClick={todasLasCategorias}>Limpiar</button>}
           </form>
         </div>
-      </section>
-      <section>
+      </SearchByNameSection>
+      <FilterByCategory>
         <button onClick={hombre}>
           <FormattedMessage
             id="app.header.categoria_modaHombre"
@@ -115,7 +121,7 @@ const ProductsPage = () => {
           />
         </button>
         <button onClick={todasLasCategorias}>Todas</button>
-      </section>
+      </FilterByCategory>
       <section>
         {/* <Paginacion
           currentPage={currentPage}

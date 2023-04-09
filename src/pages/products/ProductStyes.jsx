@@ -33,3 +33,12 @@ export const LoadingWrapper = styled.div`
   font-size: 3rem;
   font-weight: 900;
 `;
+
+export const SearchByNameSection = styled.section`
+  padding: 3rem 3rem 1.5rem 3rem;
+  text-align: center;
+`;
+export const FilterByCategory = styled.div`
+  text-align: center;
+  padding-bottom: 1.5rem;
+`;
