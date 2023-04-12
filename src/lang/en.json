@@ -8,7 +8,11 @@
   "app.header.categoria_modaHombre": "Men's clothing",
   "app.header.categoria_joya": "Jewelery",
   "app.header.categoria_electronica": "Electronics",
-  "app.header.categoria_addFavoritos": "Add to favorites",
-  "app.header.categoria_removeFavoritos": "Remove favorite",
-  "app.header.categoria_addToCart": "Add to cart"
+  "app.header.categoria_addFavoritos": " + favorites",
+  "app.header.categoria_removeFavoritos": " - favorite",
+  "app.header.categoria_addToCart": "Add to cart",
+  "app.header.loginFail": "You are not allowed",
+  "app.header.reasons": "In order to log in with fakestoreapi, you should type  mor_2314 as name and  83r5^_  as a password",
+  "app.header.label.nombre": "Name",
+  "app.header.label.password": "Password"
 }

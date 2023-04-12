@@ -9,14 +9,17 @@ const UsuarioPage = () => {
   const [usuario, setUsuario] = useState('');
   const [favoritos] = useState(() => {
     //consulto localstorage por si hay alguno
-    const resultados = JSON.parse(window.localStorage.getItem('favoritos'));
-    console.log('que son FAV', resultados);
+    const localStorageImportado = JSON.parse(window.localStorage.getItem('USER'));
+    localStorageImportado.favoritos;
+
+    const resultados = localStorageImportado.favoritos;
     if (resultados) {
       return resultados;
     } else {
       return [];
     }
   });
+  console.log('que son </ol></ol>', favoritos);
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
@@ -24,23 +27,35 @@ const UsuarioPage = () => {
     })();
   }, []);
   return (
-    <div className="fluidContainer">
+    <UsuarioWrapper>
       <button onClick={() => navigate(-1)}>Atrás</button>
       <Avatar src="https://images.mubicdn.net/images/cast_member/9020/cache-148043-1465730065/image-w856.jpg?size=800x" />
       <h1>
-        {usuario.name?.firstname} - {usuario.name?.lastname}
+        {usuario.name?.firstname.toUpperCase()} - {usuario.name?.lastname}
       </h1>
-      <ul>
-        <li>Nickname: {usuario.username}</li>
-        <li>Email: {usuario.email}</li>
-        <li>Código postal: {usuario.address?.zipcode}</li>
-        <li>Ciudad: {usuario.address?.city}</li>
-      </ul>
+      <p>
+        <strong>Nickname:</strong> {usuario.username}
+      </p>
+      <p>
+        <strong>Email:</strong> {usuario.email}
+      </p>
+      <p>
+        <strong>Código postal:</strong> {usuario.address?.zipcode}
+      </p>
+      <p>
+        <strong>Ciudad:</strong> {usuario.address?.city}
+      </p>
       <h2>Favoritos</h2>
-      {favoritos?.map((item, index) => {
-        return <li key={index}>{item}</li>;
-      })}
-    </div>
+      <ol>
+        {favoritos?.map((item, index) => {
+          return (
+            <li key={index}>
+              {item.image} {item}
+            </li>
+          );
+        })}
+      </ol>
+    </UsuarioWrapper>
   );
 };
 
@@ -49,6 +64,12 @@ const Avatar = styled.img`
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+  margin: 2rem auto;
+`;
+const UsuarioWrapper = styled.div`
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 `;
 
 export default UsuarioPage;

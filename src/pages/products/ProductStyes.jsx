@@ -3,12 +3,13 @@ export const Imagen = styled.img`
   width: 250px;
   height: 250px;
   object-fit: contain;
-  margin: 0 auto;
+  margin: 0 auto 1rem auto;
 `;
 
 export const Figure = styled.figure`
   position: relative;
   magin: 0;
+  text-align: center;
   &.favorito {
     background-color: hotpink;
   }
@@ -41,4 +42,17 @@ export const SearchByNameSection = styled.section`
 export const FilterByCategory = styled.div`
   text-align: center;
   padding-bottom: 1.5rem;
+`;
+
+export const Figcampiton = styled.figcaption`
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+`;
+
+export const Figcaption = styled.figcaption`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
 `;

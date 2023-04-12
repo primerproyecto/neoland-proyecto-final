@@ -1,38 +1,64 @@
 import React, { useContext, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 
 import { TokenContext } from '../../context/userContext';
 import { getToken } from '../../services/token';
-import { DivWrapper, Formulario } from './loginStyles';
+import { DivWrapper, Formulario, Intro } from './loginStyles';
 
 const LoginPage = () => {
   // creo estados para los campos de formulario
   const [nombre, setNombre] = useState('');
   const [contra, setContra] = useState('');
+  const [error, setError] = useState('');
   const { setToken } = useContext(TokenContext);
   const navigate = useNavigate();
 
+  // Manejo del submit del login
   const handleSubmit = (e) => {
     e.preventDefault();
 
     (async () => {
       const llamarToken = await getToken({ nombre, contra });
-      setToken(llamarToken.token);
-      window.localStorage.setItem('userToken', JSON.stringify(llamarToken.token));
+
+      if (llamarToken && nombre === 'mor_2314') {
+        setToken(llamarToken.token);
+
+        const localStorageDePalo = {
+          nombre: 'mor_2314',
+          token: llamarToken.token,
+          favoritos: [],
+          currentUser: 'mor_2314',
+        };
+
+        window.localStorage.setItem('USER', JSON.stringify(localStorageDePalo));
+        navigate('/productos');
+      } else {
+        setError('ip');
+      }
     })();
-    navigate('/productos');
   };
 
   return (
     <DivWrapper>
-      <p>
-        Para hacer login con fakestoreapi, usar <strong>mor_2314</strong> de nombre y{' '}
-        <strong>83r5^_</strong> de contraseña
-      </p>
+      {error && (
+        <h1>
+          {' '}
+          <FormattedMessage
+            id="app.header.loginFail"
+            defaultMessage="No tienes permisos"
+          />
+        </h1>
+      )}
+      <Intro>
+        <FormattedMessage id="app.header.reasons" defaultMessage="Blac bla bli" />
+      </Intro>
       <br />
       <Formulario onSubmit={handleSubmit}>
         <div className="fieldWrapper">
-          <label htmlFor="nombre">Nombre</label>
+          <label htmlFor="nombre">
+            <FormattedMessage id="app.header.label.nombre" defaultMessage="Nombre" />
+          </label>
           <input
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -41,7 +67,12 @@ const LoginPage = () => {
           />
         </div>
         <div className="fieldWrapper">
-          <label htmlFor="contra">Contraseña</label>
+          <label htmlFor="contra">
+            <FormattedMessage
+              id="app.header.label.password"
+              defaultMessage="Contraseña"
+            />
+          </label>
           <input
             value={contra}
             onChange={(e) => setContra(e.target.value)}

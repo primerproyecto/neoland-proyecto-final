@@ -11,7 +11,14 @@ const Navlink = () => {
 
   const handleLogOut = () => {
     setToken('');
-    window.localStorage.removeItem('userToken');
+
+    const localStorageDePalo = {
+      nombre: null,
+      token: null,
+      favoritos: [],
+      currentUser: null,
+    };
+    window.localStorage.setItem('USER', JSON.stringify(localStorageDePalo));
   };
   return (
     <nav>

@@ -64,6 +64,9 @@ const HeaderTag = styled.header`
   background: white;
   transition: transform 350ms;
   z-index: 9;
+  > a {
+    color: hotpink;
+  }
 `;
 
 export default Header;

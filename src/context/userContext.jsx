@@ -5,9 +5,9 @@ export const TokenContext = createContext(null);
 
 export const TokenProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
-    const storedToken = window.localStorage.getItem('userToken');
+    const localStorageDePalo = JSON.parse(window.localStorage.getItem('USER'));
 
-    return storedToken !== null ? JSON.parse(storedToken) : null;
+    return localStorageDePalo !== null ? localStorageDePalo.token : null;
   });
   return (
     <TokenContext.Provider value={{ token, setToken }}>{children}</TokenContext.Provider>

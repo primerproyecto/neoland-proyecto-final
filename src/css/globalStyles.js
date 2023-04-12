@@ -59,8 +59,9 @@ nav .active {
         max-width: 500px;
     }
     margin-bottom: 2rem;
-    .label {
 
+    button {
+        
     }
 }
 `;

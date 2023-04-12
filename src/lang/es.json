@@ -8,7 +8,11 @@
   "app.header.categoria_modaHombre": "Modal hombre",
   "app.header.categoria_joya": "Joyería",
   "app.header.categoria_electronica": "Tecnología",
-  "app.header.categoria_addFavoritos": "Agregar a favoritos",
-  "app.header.categoria_removeFavoritos": "Borrar de favoritos",
-  "app.header.categoria_addToCart": "Agregar al carrito"
+  "app.header.categoria_addFavoritos": " + favoritos",
+  "app.header.categoria_removeFavoritos": " - favoritos",
+  "app.header.categoria_addToCart": "Agregar al carrito",
+  "app.header.loginFail": "No tienes persmisos",
+  "app.header.reasons": "Para hacer login con fakestoreapi, usar mor_2314 de nombre y 83r5^_ de contraseña",
+  "app.header.label.nombre": "Nombre",
+  "app.header.label.password": "Contraseña"
 }

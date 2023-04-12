@@ -1,78 +1,57 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Heart } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
+import Buscador from '../../components/buscador/Buscador';
 //import contexto de carrito
 import { CartContext } from '../../context/cartContext';
 //importo contexto de productos
 import { ProductsContent } from '../../context/productsContext.jsx';
-//utilidades
-import { estaPresenteEnArray } from '../../utils';
 import {
+  Figcampiton,
+  Figcaption,
   Figure,
+  FilterByCategory,
   Imagen,
   LoadingWrapper,
-  SearchByNameSection,
-  FilterByCategory,
 } from './ProductStyes.jsx';
 
 const ProductsPage = () => {
-  const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('');
-  const {
-    productos,
-    setProductos,
-    mujer,
-    hombre,
-    joyas,
-    electronica,
-    todasLasCategorias,
-    isLoading,
-  } = useContext(ProductsContent);
+  const { productos, mujer, hombre, joyas, electronica, todasLasCategorias, isLoading } =
+    useContext(ProductsContent);
 
   const [favoritos, setFavoritos] = useState(() => {
-    const resultados = JSON.parse(window.localStorage.getItem('favoritos'));
+    const localStorageImportado = JSON.parse(window.localStorage.getItem('USER'));
+    /* localStorageImportado.favoritos; */
+
+    const resultados = localStorageImportado.favoritos;
+
     if (resultados) {
       return resultados;
     } else {
       return [];
     }
   });
-  console.log('desde el estado', favoritos);
 
   const { addToCart } = useContext(CartContext);
-  // referencia para hace focus onload
-  const inputRef = useRef();
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
-  // buscar desde campo input
-  const buscar = (e) => {
-    e.preventDefault();
-    if (terminoDeBusqueda) {
-      setProductos(
-        productos.filter((item) => {
-          return item.title.toLocaleLowerCase().includes(terminoDeBusqueda);
-        }),
-      );
-    }
-  };
-
-  //checquear que sea favorito
 
   const addToFavorites = (item) => {
-    if (!estaPresenteEnArray(favoritos, item.title)) {
-      setFavoritos([...favoritos, item.title]);
-      //lo meto al localstorage
-      window.localStorage.setItem('favoritos', JSON.stringify(favoritos));
-    }
+    setFavoritos([...favoritos, item.title]);
+
+    const localStorageImportado = JSON.parse(window.localStorage.getItem('USER'));
+    localStorageImportado.favoritos = [...favoritos, item.title];
+    window.localStorage.setItem('USER', JSON.stringify(localStorageImportado));
   };
   const removeFavorite = (item) => {
     const newArray = favoritos.filter((favorito) => favorito !== item.title);
-    console.log('que es newarray', newArray), setFavoritos(newArray);
-    window.localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    setFavoritos(newArray);
+
+    const localStorageImportado = JSON.parse(window.localStorage.getItem('USER'));
+    localStorageImportado.favoritos = favoritos.filter(
+      (favorito) => favorito !== item.title,
+    );
+    window.localStorage.setItem('USER', JSON.stringify(localStorageImportado));
   };
 
   return (
@@ -82,22 +61,7 @@ const ProductsPage = () => {
           <FormattedMessage id="app.header.cargando" defaultMessage="Cargando..." />
         </LoadingWrapper>
       )}
-
-      <SearchByNameSection>
-        <div className="wrapper">
-          <form>
-            <input
-              type="text"
-              ref={inputRef}
-              placeholder="Búsqueda de producto"
-              value={terminoDeBusqueda}
-              onChange={(e) => setTerminoDeBusqueda(e.target.value.toLocaleLowerCase())}
-            />
-            <button onClick={buscar}>buscar</button>
-            {terminoDeBusqueda && <button onClick={todasLasCategorias}>Limpiar</button>}
-          </form>
-        </div>
-      </SearchByNameSection>
+      <Buscador />
       <FilterByCategory>
         <button onClick={hombre}>
           <FormattedMessage
@@ -122,6 +86,22 @@ const ProductsPage = () => {
         </button>
         <button onClick={todasLasCategorias}>Todas</button>
       </FilterByCategory>
+      {/* <ol
+        style={{
+          position: 'fixed',
+          bottom: '0px',
+          right: '0px',
+          backgroundColor: 'hotpink',
+          color: 'white',
+          width: '300px',
+          zIndex: 9999,
+          padding: '1rem 1rem 1rem 2rem',
+        }}
+      >
+        {productos.map((producto, index) => (
+          <li key={index}>{producto.title}</li>
+        ))}
+      </ol> */}
       <section>
         {/* <Paginacion
           currentPage={currentPage}
@@ -139,8 +119,8 @@ const ProductsPage = () => {
               </Link>
 
               {favoritos.some((favorito) => item.title === favorito) ? <Heart /> : ''}
-              <figcaption>{item.title}</figcaption>
-              <p>Categoria {item.category}</p>
+              <Figcaption>{item.title}</Figcaption>
+              <Figcampiton>{item.category}</Figcampiton>
               <div>
                 {favoritos.some((favorito) => item.title === favorito) ? (
                   <button
@@ -163,19 +143,19 @@ const ProductsPage = () => {
                   >
                     <FormattedMessage
                       id="app.header.categoria_addFavoritos"
-                      defaultMessage="Moda hombre"
+                      defaultMessage="Añadir a favoritos"
                     />
                   </button>
                 )}
 
                 <button
                   onClick={() => {
-                    addToCart(item, item.id);
+                    addToCart(item);
                   }}
                 >
                   <FormattedMessage
                     id="app.header.categoria_addToCart"
-                    defaultMessage="Moda hombre"
+                    defaultMessage="Añadir al carrito"
                   />
                 </button>
               </div>

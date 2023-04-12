@@ -2,9 +2,8 @@ import React from 'react';
 import { useId } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { devices } from '../../theme/theme';
 
-import newsletterimage from '../../assets/1681049275106.png';
+import { devices } from '../../theme/theme';
 
 const NewsletterPage = () => {
   // useid to link label and input
@@ -27,9 +26,6 @@ const NewsletterPage = () => {
   const categorias = ['electronics', 'jewelery', "men's clothing", "women's clothing"];
   return (
     <NewsletterWrapper>
-      <div>
-        <img src={newsletterimage} alt=" " />
-      </div>
       <div style={{ width: '100%' }}>
         <h1>NewsletterPage</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
