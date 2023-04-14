@@ -49,7 +49,7 @@ nav .active {
     }
 }
     input {
-        background-color: hsl(333deg 100% 50%);
+        background-color: hotpink;
         border-radius: 4px;
         max-width: 100%;
         width: 100%;
@@ -60,10 +60,11 @@ nav .active {
     }
     margin-bottom: 2rem;
 
-    button {
-        
-    }
+   
 }
+h1,h2 {
+        color: hotpink
+    }
 `;
 
 export default GlobalStyles;

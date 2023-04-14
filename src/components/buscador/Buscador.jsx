@@ -4,7 +4,7 @@ import styled from 'styled-components';
 //importo contexto de productos
 import { ProductsContent } from '../../context/productsContext.jsx';
 
-const Buscador = () => {
+const Buscador2 = () => {
   const [terminoDeBusqueda, setTerminoDeBusqueda] = useState('');
 
   const { productos, setProductos } = useContext(ProductsContent);
@@ -48,4 +48,4 @@ export const SearchByNameSection = styled.section`
   padding: 3rem 3rem 1.5rem 3rem;
   text-align: center;
 `;
-export default Buscador;
+export default Buscador2;

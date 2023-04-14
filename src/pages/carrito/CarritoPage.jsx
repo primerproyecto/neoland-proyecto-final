@@ -14,12 +14,12 @@ const CarritoPage = () => {
       {cart.length > 0 ? (
         <div>
           <h2>CarritoPage{carritoId.id}</h2>
-          <br />
           <ul>
             {cart.map((item) => {
               return (
                 <CarritoLi key={item.id}>
-                  <ImagenCarrito src={item.image} alt="" /> {item.title} {''}
+                  <ImagenCarrito src={item.image} alt="" />{' '}
+                  <Parrafo>{item.title}</Parrafo> {''}
                   <button onClick={() => removeCart(item.id)}>Quitar del carrito</button>
                 </CarritoLi>
               );
@@ -28,7 +28,7 @@ const CarritoPage = () => {
         </div>
       ) : (
         <Empty>
-          <h2>No tienes productos todavía.</h2>
+          <Cabecera>No tienes productos todavía.</Cabecera>
           <p>Pásate por nuestra tienda para comprar</p>
         </Empty>
       )}
@@ -60,8 +60,15 @@ const Empty = styled.div`
 
 const CarritoWrapper = styled.div`
   display: flex;
-  height: 100%;
   align-items: center;
+`;
+const Parrafo = styled.p`
+  margin: 0 12px;
+  font-size: 1rem;
+`;
+
+const Cabecera = styled.h2`
+  color: white;
 `;
 
 export default CarritoPage;

@@ -10,6 +10,7 @@ import ProtectedRoutes from './components/protectedRoutes/protectedRoutes';
 import { ProductsProvider } from './context/productsContext';
 import CarritoPage from './pages/carrito/CarritoPage';
 import ErrorPage from './pages/error/ErrorPage';
+import Home from './pages/home/Home';
 import LoginPage from './pages/login/LoginPage';
 import NewsletterPage from './pages/newsletter/NewsletterPage';
 import ProductPage from './pages/product/ProductPage';
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/productos" element={<ProductsPage />} />
             <Route path="/productos/:id" element={<ProductPage />} />
